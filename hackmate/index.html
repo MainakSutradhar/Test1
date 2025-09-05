@@ -18,52 +18,73 @@
 
   <header class="relative z-10 border-b border-white/10 backdrop-blur supports-[backdrop-filter]:bg-slate-900/40">
     <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-lg bg-gradient-to-br from-fuchsia-500 via-violet-500 to-cyan-500 shadow-[0_0_40px_-10px_rgba(168,85,247,.7)]"></div>
-        <h1 class="text-xl font-bold tracking-tight">HackMate</h1>
-      </div>
+      <a href="#home" class="flex items-center gap-3">
+        <svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="rounded-xl shadow-[0_0_40px_-10px_rgba(168,85,247,.7)]">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#a855f7"/>
+              <stop offset="60%" stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#g)"/>
+          <text x="50%" y="54%" text-anchor="middle" font-size="28" font-weight="800" fill="#0b1020" font-family="Inter, system-ui">HM</text>
+        </svg>
+        <h1 class="text-xl font-extrabold tracking-tight">HackMate</h1>
+      </a>
       <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-        <a href="#" class="hover:text-white">Home</a>
-        <a href="#" class="hover:text-white">Profiles</a>
-        <a href="#" class="hover:text-white">About</a>
+        <a href="#home" class="hover:text-white">Home</a>
+        <a href="#search" class="hover:text-white">Profiles</a>
+        <a href="#about" class="hover:text-white">About</a>
       </nav>
-      <button id="newProfileBtn" class="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500">Create Profile</button>
+      <a href="#create-profile" id="newProfileBtn" class="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500">Create Profile</a>
     </div>
   </header>
 
   <main class="relative z-10 mx-auto max-w-7xl px-6 py-10">
-    <section class="mb-8">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-        <div>
-          <h2 class="text-3xl font-extrabold tracking-tight">Find your perfect hackathon match</h2>
-          <p class="mt-1 text-slate-400">Search teammates or teams based on skills, connect instantly, and collaborate.</p>
+    <section id="home" class="mb-12">
+      <div class="text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight glow-text glow-pulse">Find your perfect hackathon match</h2>
+        <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Search teammates or teams based on skills, connect instantly, and collaborate.</p>
+        <div class="mt-6 flex items-center justify-center gap-3">
+          <a href="#search" class="rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_0_40px_-12px_rgba(34,211,238,0.6)] hover:opacity-95">Explore Profiles</a>
+          <a href="#create-profile" class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white hover:bg-white/10">Create Profile</a>
         </div>
-        <div class="flex items-center gap-3">
-          <div class="relative">
-            <input id="locationFilter" type="text" placeholder="Filter by location" class="w-56 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/60" />
-          </div>
+      </div>
+
+      <div class="mt-10">
+        <div class="mb-3 flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Suggested for you</h3>
+          <a href="#search" class="text-sm text-cyan-300 hover:underline">See all</a>
         </div>
+        <div id="suggestionsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
       </div>
     </section>
 
-    <section>
-      <div class="mb-6 inline-flex rounded-xl bg-white/5 p-1 backdrop-blur border border-white/10">
-        <button id="tabTeammate" class="tab-btn active">Find Teammate</button>
-        <button id="tabTeam" class="tab-btn">Find Team</button>
+    <section id="search">
+      <div class="mb-6 flex items-center gap-3">
+        <button id="tabTeammate" class="tab-btn active inline-flex items-center gap-2 border border-white/10">
+          <span>👤</span>
+          <span>Find Teammate</span>
+        </button>
+        <button id="tabTeam" class="tab-btn inline-flex items-center gap-2 border border-white/10">
+          <span>👥</span>
+          <span>Find Team</span>
+        </button>
+        <div class="ml-auto">
+          <input id="locationFilter" type="text" placeholder="Filter by location" class="w-56 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/60" />
+        </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <aside class="lg:col-span-1 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
           <h3 class="mb-3 text-sm font-semibold tracking-wide text-slate-300 uppercase">Skills</h3>
           <div class="space-y-3">
-            <div class="relative">
+            <div class="relative space-y-2">
               <input id="skillSearch" type="text" class="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500/60" placeholder="Search skills" />
-            </div>
-            <div id="skillsList" class="max-h-56 overflow-auto rounded-lg border border-white/10 bg-slate-900/40 p-2 text-sm"></div>
-            <div>
-              <h4 class="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">Selected</h4>
               <div id="selectedSkills" class="flex flex-wrap gap-2"></div>
             </div>
+            <div id="skillsList" class="max-h-56 overflow-auto rounded-lg border border-white/10 bg-slate-900/40 p-2 text-sm"></div>
           </div>
         </aside>
 
@@ -75,6 +96,30 @@
 
           <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
         </section>
+      </div>
+    </section>
+
+    <section id="about" class="mt-16">
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+        <h3 class="text-xl font-bold">About HackMate</h3>
+        <p class="mt-2 text-slate-300">HackMate helps participants find teammates and teams for hackathons quickly using skill-based matching and instant chat. Built with care to make collaboration delightful.</p>
+      </div>
+    </section>
+
+    <section id="create-profile" class="mt-16">
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+        <h3 class="text-xl font-bold">Create your profile</h3>
+        <form class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" placeholder="Full name" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm" />
+          <input type="email" placeholder="Email" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm" />
+          <input type="text" placeholder="College / Organization" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm" />
+          <input type="text" placeholder="Location" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm" />
+          <textarea placeholder="Short bio / README" rows="4" class="md:col-span-2 rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm"></textarea>
+          <div class="md:col-span-2 flex items-center justify-end gap-3">
+            <button type="button" class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm text-white hover:bg-white/10">Preview</button>
+            <button type="button" class="rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white">Save (demo)</button>
+          </div>
+        </form>
       </div>
     </section>
   </main>
@@ -115,6 +160,36 @@
       </div>
     </div>
   </div>
+
+  <footer class="relative z-10 mt-16 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-300">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="h-7 w-7 rounded-md bg-gradient-to-br from-fuchsia-500 via-violet-500 to-cyan-500"></div>
+          <span class="font-semibold">HackMate</span>
+        </div>
+        <p class="mt-2 text-slate-400">Find teammates and teams for hackathons with skill-based matching.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Links</h4>
+        <ul class="mt-2 space-y-1">
+          <li><a href="#home" class="hover:text-white">Home</a></li>
+          <li><a href="#search" class="hover:text-white">Profiles</a></li>
+          <li><a href="#about" class="hover:text-white">About</a></li>
+          <li><a href="#create-profile" class="hover:text-white">Create Profile</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Socials</h4>
+        <div class="mt-2 flex items-center gap-3">
+          <a href="#" aria-label="GitHub" class="rounded-md border border-white/10 bg-white/5 px-3 py-2 hover:bg-white/10">GitHub</a>
+          <a href="#" aria-label="Twitter" class="rounded-md border border-white/10 bg-white/5 px-3 py-2 hover:bg-white/10">Twitter</a>
+          <a href="#" aria-label="LinkedIn" class="rounded-md border border-white/10 bg-white/5 px-3 py-2 hover:bg-white/10">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-xs text-slate-500 pb-8">© <span id="year"></span> HackMate. All rights reserved.</div>
+  </footer>
 
   <script src="app.js"></script>
 </body>

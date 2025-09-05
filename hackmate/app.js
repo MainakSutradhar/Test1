@@ -9,6 +9,54 @@ const sampleSkills = [
   "Figma", "UI/UX", "Product Design", "Project Management"
 ];
 
+const skillIcons = {
+  "JavaScript": "🟨",
+  "TypeScript": "🟦",
+  "React": "⚛️",
+  "Next.js": "⏭️",
+  "Vue": "🟢",
+  "Svelte": "🟠",
+  "Node.js": "🟩",
+  "Express": "🧭",
+  "Python": "🐍",
+  "Django": "🌿",
+  "Flask": "🍶",
+  "FastAPI": "⚡",
+  "Go": "🐹",
+  "Rust": "🦀",
+  "Java": "☕",
+  "Spring": "🌱",
+  "Kotlin": "🟪",
+  "Swift": "🟧",
+  "MongoDB": "🍃",
+  "PostgreSQL": "🐘",
+  "MySQL": "💠",
+  "SQLite": "🧩",
+  "Redis": "🟥",
+  "Tailwind CSS": "🌬️",
+  "CSS": "🎨",
+  "HTML": "🧱",
+  "GraphQL": "🔺",
+  "REST API": "🔌",
+  "AWS": "☁️",
+  "GCP": "☁️",
+  "Azure": "☁️",
+  "Docker": "🐳",
+  "Kubernetes": "☸️",
+  "Machine Learning": "🧠",
+  "Deep Learning": "🧬",
+  "NLP": "🗣️",
+  "Data Science": "📊",
+  "Figma": "🎛️",
+  "UI/UX": "💡",
+  "Product Design": "📐",
+  "Project Management": "📋"
+};
+
+function getSkillIcon(skill) {
+  return skillIcons[skill] || skill[0];
+}
+
 const sampleProfiles = [
   {
     id: "p1",
@@ -79,9 +127,13 @@ const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 function init() {
   bindTabs();
   bindFilters();
+  bindNavLinks();
   renderSkills();
   applyFilters();
   setupChat();
+  renderSuggestions();
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
 function bindTabs() {
@@ -109,6 +161,21 @@ function bindFilters() {
   });
 }
 
+function bindNavLinks() {
+  $$('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const hash = a.getAttribute('href');
+      if (!hash || hash === '#') return;
+      const target = document.querySelector(hash);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', hash);
+      }
+    });
+  });
+}
+
 function renderSkills() {
   const list = $("#skillsList");
   const term = $("#skillSearch").value.toLowerCase();
@@ -121,9 +188,13 @@ function renderSkills() {
       item.className = "skill-item";
       const checked = state.selectedSkills.has(skill);
       item.innerHTML = `
-        <span>${skill}</span>
-        <span class="badge">${checked ? "Selected" : "Add"}</span>
+        <div class="skill-left">
+          <div class="skill-icon" aria-hidden="true">${getSkillIcon(skill)}</div>
+          <span>${skill}</span>
+        </div>
+        <button class="skill-check ${checked ? 'selected' : ''}" aria-label="${checked ? 'Deselect' : 'Select'} ${skill}">✓</button>
       `;
+      item.querySelector('.skill-check').addEventListener("click", (e) => { e.stopPropagation(); toggleSkill(skill); });
       item.addEventListener("click", () => toggleSkill(skill));
       list.appendChild(item);
     });
@@ -183,6 +254,13 @@ function applyFilters() {
     filtered.forEach((t) => resultsGrid.appendChild(renderTeamCard(t)));
     emptyState.classList.toggle("hidden", filtered.length !== 0);
   }
+}
+
+function renderSuggestions() {
+  const grid = document.getElementById('suggestionsGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  sampleProfiles.slice(0, 3).forEach((p) => grid.appendChild(renderProfileCard(p)));
 }
 
 function renderProfileCard(p) {
