@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HackMate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+  <div class="pointer-events-none fixed inset-0 overflow-hidden">
+    <div class="absolute -top-48 -left-40 h-96 w-96 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+    <div class="absolute -bottom-48 -right-40 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl"></div>
+  </div>
+
+  <header class="relative z-10 border-b border-white/10 backdrop-blur supports-[backdrop-filter]:bg-slate-900/40">
+    <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-gradient-to-br from-fuchsia-500 via-violet-500 to-cyan-500 shadow-[0_0_40px_-10px_rgba(168,85,247,.7)]"></div>
+        <h1 class="text-xl font-bold tracking-tight">HackMate</h1>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#" class="hover:text-white">Home</a>
+        <a href="#" class="hover:text-white">Profiles</a>
+        <a href="#" class="hover:text-white">About</a>
+      </nav>
+      <button id="newProfileBtn" class="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500">Create Profile</button>
+    </div>
+  </header>
+
+  <main class="relative z-10 mx-auto max-w-7xl px-6 py-10">
+    <section class="mb-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <h2 class="text-3xl font-extrabold tracking-tight">Find your perfect hackathon match</h2>
+          <p class="mt-1 text-slate-400">Search teammates or teams based on skills, connect instantly, and collaborate.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <input id="locationFilter" type="text" placeholder="Filter by location" class="w-56 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/60" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="mb-6 inline-flex rounded-xl bg-white/5 p-1 backdrop-blur border border-white/10">
+        <button id="tabTeammate" class="tab-btn active">Find Teammate</button>
+        <button id="tabTeam" class="tab-btn">Find Team</button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <aside class="lg:col-span-1 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+          <h3 class="mb-3 text-sm font-semibold tracking-wide text-slate-300 uppercase">Skills</h3>
+          <div class="space-y-3">
+            <div class="relative">
+              <input id="skillSearch" type="text" class="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500/60" placeholder="Search skills" />
+            </div>
+            <div id="skillsList" class="max-h-56 overflow-auto rounded-lg border border-white/10 bg-slate-900/40 p-2 text-sm"></div>
+            <div>
+              <h4 class="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">Selected</h4>
+              <div id="selectedSkills" class="flex flex-wrap gap-2"></div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="lg:col-span-3 space-y-6">
+          <div id="emptyState" class="hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/60 via-slate-900/40 to-slate-900/60 p-10 text-center">
+            <h3 class="text-xl font-semibold">No results yet</h3>
+            <p class="mt-1 text-slate-400">Pick some skills to see matching profiles and teams.</p>
+          </div>
+
+          <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div id="chatModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur"></div>
+    <div class="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 px-5 py-3">
+        <div class="flex items-center gap-3">
+          <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500"></div>
+          <div>
+            <p id="chatWith" class="text-sm font-semibold">Chat</p>
+            <p id="chatSub" class="text-xs text-slate-400">Connect and discuss</p>
+          </div>
+        </div>
+        <button id="closeChat" class="rounded-md p-2 text-slate-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/60">✕</button>
+      </div>
+      <div id="messages" class="h-80 overflow-auto space-y-3 px-5 py-4 bg-[radial-gradient(1000px_200px_at_70%_-30%,rgba(34,211,238,0.08),transparent)]"></div>
+      <div class="border-t border-white/10 px-5 py-3">
+        <div class="flex items-center gap-2">
+          <input id="messageInput" type="text" placeholder="Write a message..." class="flex-1 rounded-lg border border-white/10 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500/60" />
+          <label class="cursor-pointer rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 hover:bg-white/10">
+            <input id="attachmentInput" type="file" class="hidden" />
+            Attach
+          </label>
+          <button id="sendBtn" class="rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_0_40px_-12px_rgba(34,211,238,0.6)] hover:opacity-95">Send</button>
+        </div>
+        <div class="mt-3 flex items-center justify-end gap-2 text-xs">
+          <div id="recruiterActions" class="hidden gap-2">
+            <button id="approveBtn" class="rounded-md bg-emerald-500/20 px-3 py-1.5 font-medium text-emerald-300 hover:bg-emerald-500/30">Approve Teammate</button>
+            <button id="rejectBtn" class="rounded-md bg-rose-500/20 px-3 py-1.5 font-medium text-rose-300 hover:bg-rose-500/30">Reject</button>
+          </div>
+          <div id="applicantActions" class="hidden gap-2">
+            <button id="acceptBtn" class="rounded-md bg-emerald-500/20 px-3 py-1.5 font-medium text-emerald-300 hover:bg-emerald-500/30">Accept Invite</button>
+            <button id="declineBtn" class="rounded-md bg-rose-500/20 px-3 py-1.5 font-medium text-rose-300 hover:bg-rose-500/30">Reject</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
