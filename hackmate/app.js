@@ -128,6 +128,7 @@ function init() {
   bindTabs();
   bindFilters();
   bindNavLinks();
+  bindSearchPanel();
   renderSkills();
   applyFilters();
   setupChat();
@@ -166,6 +167,14 @@ function bindNavLinks() {
     a.addEventListener('click', (e) => {
       const hash = a.getAttribute('href');
       if (!hash || hash === '#') return;
+      if (hash === '#search') {
+        e.preventDefault();
+        showSearchPanel();
+        const target = document.querySelector(hash);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', hash);
+        return;
+      }
       const target = document.querySelector(hash);
       if (target) {
         e.preventDefault();
@@ -174,6 +183,34 @@ function bindNavLinks() {
       }
     });
   });
+}
+
+function bindSearchPanel() {
+  const closeBtn = document.getElementById('closeSearchPanel');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      hideSearchPanel();
+      const home = document.getElementById('home');
+      if (home) home.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', '#home');
+    });
+  }
+}
+
+function showSearchPanel() {
+  const section = document.getElementById('search');
+  if (!section) return;
+  section.classList.remove('hidden');
+  // Ensure tabs are bound/active and results render
+  applyFilters();
+  const input = document.getElementById('skillSearch');
+  if (input) input.focus();
+}
+
+function hideSearchPanel() {
+  const section = document.getElementById('search');
+  if (!section) return;
+  section.classList.add('hidden');
 }
 
 function renderSkills() {
@@ -270,7 +307,11 @@ function renderProfileCard(p) {
     <div class="card-body">
       <div class="flex items-start justify-between gap-3">
         <div class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500"></div>
+          <div class="h-10 w-10 rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 grid place-items-center text-slate-900">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+              <path d="M12 12c2.761 0 5-2.462 5-5.5S14.761 1 12 1 7 3.462 7 6.5 9.239 12 12 12zm0 2c-4.418 0-8 2.91-8 6.5 0 .828.672 1.5 1.5 1.5h13c.828 0 1.5-.672 1.5-1.5 0-3.59-3.582-6.5-8-6.5z"/>
+            </svg>
+          </div>
           <div>
             <h4 class="font-semibold">${p.name}</h4>
             <p class="text-xs text-slate-400">${p.organization} • ${p.location}</p>
