@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HackMate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+  <div class="pointer-events-none fixed inset-0 overflow-hidden">
+    <div class="absolute -top-48 -left-40 h-96 w-96 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+    <div class="absolute -bottom-48 -right-40 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl"></div>
+  </div>
+
+  <header class="app-header relative z-10 supports-[backdrop-filter]:bg-slate-900/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-5 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="rounded-xl shadow-[0_0_40px_-10px_rgba(168,85,247,.7)]">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#0ea5e9"/>
+              <stop offset="50%" stop-color="#8b5cf6"/>
+              <stop offset="100%" stop-color="#f472b6"/>
+            </linearGradient>
+            <radialGradient id="rg" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#g)"/>
+          <circle cx="18" cy="22" r="6" fill="#0b1020"/>
+          <circle cx="18" cy="22" r="3" fill="url(#rg)" filter="url(#glow)"/>
+          <path d="M30 18 h14 a6 6 0 0 1 6 6 v16 a6 6 0 0 1 -6 6 h-20 a6 6 0 0 1 -6 -6 v-6" fill="#0b1020"/>
+          <path d="M28 42 l8 -10 l6 6 l10 -14" stroke="url(#g)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+        </svg>
+        <h1 class="text-xl font-extrabold tracking-tight">HackMate</h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#home" class="nav-link hover:text-white">Home</a>
+        <a href="#search" class="nav-link hover:text-white">Profiles</a>
+        <a href="#search" class="nav-link hover:text-white">Search</a>
+        <a href="#about" class="nav-link hover:text-white">About</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="login.html" class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white hover:bg-white/10">Login</a>
+        <a href="signup.html" class="rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_0_30px_-12px_rgba(34,211,238,0.5)] hover:opacity-95">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-10">
+    <section id="home" class="mb-12">
+      <div class="fade-up relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/40 to-slate-950/60 p-10 text-center">
+        <div class="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl"></div>
+        <h2 class="text-5xl md:text-6xl font-extrabold tracking-tight glow-text glow-pulse">Find your perfect hackathon match</h2>
+        <p class="mt-3 text-slate-400 max-w-2xl mx-auto">Match with teammates or teams based on skills. Chat instantly. Build fast.</p>
+        <div class="mt-6 flex items-center justify-center gap-3">
+          <a href="#search" class="rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_40px_-12px_rgba(34,211,238,0.6)] hover:opacity-95">Start searching</a>
+          <a href="signup.html" class="rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10">Sign Up</a>
+        </div>
+        <div class="mt-8 flex items-center justify-center gap-6 text-xs text-slate-400">
+          <span class="opacity-70">Trusted by</span>
+          <div class="flex items-center gap-4 opacity-70">
+            <span class="uppercase tracking-wider">MLH</span>
+            <span class="uppercase tracking-wider">Devpost</span>
+            <span class="uppercase tracking-wider">GitHub</span>
+            <span class="uppercase tracking-wider">Vercel</span>
+            <span class="uppercase tracking-wider">Figma</span>
+          </div>
+        </div>
+        <div class="mt-10 rounded-2xl border border-white/10 bg-slate-900/40 p-0 overflow-hidden">
+          <div class="flex items-center gap-1 border-b border-white/10 bg-slate-900/60 px-4 py-2 text-left text-xs text-slate-400">
+            <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-amber-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
+            <span class="ml-3">Popular profiles</span>
+          </div>
+          <div class="p-4">
+            <div class="mb-3 flex items-center justify-between">
+              <h3 class="text-lg font-semibold">Suggested for you</h3>
+              <a href="#search" class="text-sm text-cyan-300 hover:underline">See all</a>
+            </div>
+            <div id="suggestionsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section id="search" class="mt-8">
+      <div class="fade-up rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+        <div class="mb-4 grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
+          <div class="md:col-span-2 flex items-center gap-3">
+            <h3 class="text-xl font-bold">Search</h3>
+            <div class="flex items-center gap-3">
+              <button id="tabTeammate" class="tab-btn active inline-flex items-center gap-2 border border-white/10">
+                <span>👤</span>
+                <span>Find Teammate</span>
+              </button>
+              <button id="tabTeam" class="tab-btn inline-flex items-center gap-2 border border-white/10">
+                <span>👥</span>
+                <span>Find Team</span>
+              </button>
+            </div>
+          </div>
+          <div class="md:col-span-1">
+            <input id="locationFilter" type="text" placeholder="Filter by location" class="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/60" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <aside class="lg:col-span-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur lg:sticky lg:top-24">
+            <h4 class="mb-3 text-sm font-semibold tracking-wide text-slate-300 uppercase">Skills</h4>
+            <div class="space-y-3">
+              <div class="relative space-y-2">
+                <input id="skillSearch" type="text" class="w-full rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500/60" placeholder="Search skills" />
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold uppercase tracking-wide text-slate-400">Selected</span>
+                  <button id="clearSkillsBtn" class="text-xs text-slate-400 hover:text-white">Clear</button>
+                </div>
+                <div id="selectedSkills" class="flex flex-wrap gap-2"></div>
+              </div>
+              <div id="skillsList" class="max-h-56 overflow-auto rounded-lg border border-white/10 bg-slate-900/40 p-2 text-sm"></div>
+            </div>
+          </aside>
+
+          <section class="lg:col-span-8 space-y-6">
+            <div class="flex items-center justify-between">
+              <h4 id="resultsTitle" class="text-base font-semibold">Matching Teammates</h4>
+              <span id="resultsCount" class="text-xs text-slate-400"></span>
+            </div>
+            <div id="emptyState" class="hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/60 via-slate-900/40 to-slate-900/60 p-10 text-center">
+              <h5 class="text-lg font-semibold">No results yet</h5>
+              <p class="mt-1 text-slate-400">Pick some skills to see matching profiles and teams.</p>
+            </div>
+            <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="mt-16">
+      <div class="fade-up rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+        <h3 class="text-xl font-bold">About HackMate</h3>
+        <p class="mt-2 text-slate-300">HackMate helps participants find teammates and teams for hackathons quickly using skill-based matching and instant chat. Built with care to make collaboration delightful.</p>
+      </div>
+    </section>
+
+    <section id="features" class="mt-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="feature-icon">⚡</div>
+            <div>
+              <h4 class="font-semibold">Instant Matching</h4>
+              <p class="mt-1 text-sm text-slate-400">Filter by skills and location to find ideal teammates and teams.</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="feature-icon">💬</div>
+            <div>
+              <h4 class="font-semibold">Built-in Chat</h4>
+              <p class="mt-1 text-sm text-slate-400">Share links, files, and discuss right away without context switching.</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="feature-icon">🎯</div>
+            <div>
+              <h4 class="font-semibold">Skill-first Profiles</h4>
+              <p class="mt-1 text-sm text-slate-400">Showcase what you’re great at and get discovered faster.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <div id="chatModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur"></div>
+    <div class="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 px-5 py-3">
+        <div class="flex items-center gap-3">
+          <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500"></div>
+          <div>
+            <p id="chatWith" class="text-sm font-semibold">Chat</p>
+            <p id="chatSub" class="text-xs text-slate-400">Connect and discuss</p>
+          </div>
+        </div>
+        <button id="closeChat" class="rounded-md p-2 text-slate-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/60">✕</button>
+      </div>
+      <div id="messages" class="h-80 overflow-auto space-y-3 px-5 py-4 bg-[radial-gradient(1000px_200px_at_70%_-30%,rgba(34,211,238,0.08),transparent)]"></div>
+      <div class="border-t border-white/10 px-5 py-3">
+        <div class="flex items-center gap-2">
+          <input id="messageInput" type="text" placeholder="Write a message..." class="flex-1 rounded-lg border border-white/10 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500/60" />
+          <label class="cursor-pointer rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 hover:bg-white/10">
+            <input id="attachmentInput" type="file" class="hidden" />
+            Attach
+          </label>
+          <button id="sendBtn" class="rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_0_40px_-12px_rgba(34,211,238,0.6)] hover:opacity-95">Send</button>
+        </div>
+        <div class="mt-3 flex items-center justify-end gap-2 text-xs">
+          <div id="recruiterActions" class="hidden gap-2">
+            <button id="approveBtn" class="rounded-md bg-emerald-500/20 px-3 py-1.5 font-medium text-emerald-300 hover:bg-emerald-500/30">Approve Teammate</button>
+            <button id="rejectBtn" class="rounded-md bg-rose-500/20 px-3 py-1.5 font-medium text-rose-300 hover:bg-rose-500/30">Reject</button>
+          </div>
+          <div id="applicantActions" class="hidden gap-2">
+            <button id="acceptBtn" class="rounded-md bg-emerald-500/20 px-3 py-1.5 font-medium text-emerald-300 hover:bg-emerald-500/30">Accept Invite</button>
+            <button id="declineBtn" class="rounded-md bg-rose-500/20 px-3 py-1.5 font-medium text-rose-300 hover:bg-rose-500/30">Reject</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-wrap relative z-10 mt-16 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-300">
+      <div>
+        <div class="flex items-center gap-2">
+          <svg width="28" height="28" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="rounded-lg">
+            <defs>
+              <linearGradient id="g" x1="0" y="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0ea5e9"/>
+                <stop offset="50%" stop-color="#8b5cf6"/>
+                <stop offset="100%" stop-color="#f472b6"/>
+              </linearGradient>
+              <radialGradient id="rg" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </radialGradient>
+            </defs>
+            <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#g)"/>
+            <circle cx="18" cy="22" r="6" fill="#0b1020"/>
+            <circle cx="18" cy="22" r="3" fill="url(#rg)"/>
+            <path d="M30 18 h14 a6 6 0 0 1 6 6 v16 a6 6 0 0 1 -6 6 h-20 a6 6 0 0 1 -6 -6 v-6" fill="#0b1020"/>
+            <path d="M28 42 l8 -10 l6 6 l10 -14" stroke="url(#g)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-semibold">HackMate</span>
+        </div>
+        <p class="mt-2 text-slate-400">Find teammates and teams for hackathons with skill-based matching.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Links</h4>
+        <ul class="mt-2 space-y-1">
+          <li><a href="#home" class="footer-link hover:text-white">Home</a></li>
+          <li><a href="#search" class="footer-link hover:text-white">Profiles</a></li>
+          <li><a href="#about" class="footer-link hover:text-white">About</a></li>
+          <li><a href="login.html" class="footer-link hover:text-white">Login</a></li>
+          <li><a href="signup.html" class="footer-link hover:text-white">Sign Up</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-slate-200">Socials</h4>
+        <div class="mt-2 flex items-center gap-3">
+          <a href="#" aria-label="GitHub" class="rounded-md border border-white/10 bg-white/5 px-3 py-2 hover:bg-white/10">GitHub</a>
+          <a href="#" aria-label="Twitter" class="rounded-md border border-white/10 bg-white/5 px-3 py-2 hover:bg-white/10">Twitter</a>
+          <a href="#" aria-label="LinkedIn" class="rounded-md border border-white/10 bg-white/5 px-3 py-2 hover:bg-white/10">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-xs text-slate-500 pb-8">© <span id="year"></span> HackMate. All rights reserved.</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
