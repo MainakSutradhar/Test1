@@ -169,6 +169,8 @@ function bindFilters() {
     state.locationFilter = e.target.value.toLowerCase();
     applyFilters();
   });
+  const clear = document.getElementById('clearSkillsBtn');
+  if (clear) clear.addEventListener('click', () => { state.selectedSkills.clear(); renderSkills(); applyFilters(); });
 }
 
 function bindNavLinks() {
@@ -288,18 +290,26 @@ function applyFilters() {
   const hasSkills = (arr) => skills.every((s) => arr.includes(s));
 
   if (state.tab === "teammate") {
+    const title = document.getElementById('resultsTitle');
+    if (title) title.textContent = 'Matching Teammates';
     const filtered = sampleProfiles.filter((p) =>
       (!state.locationFilter || p.location.toLowerCase().includes(state.locationFilter)) &&
       (skills.length === 0 || hasSkills(p.skills))
     );
     filtered.forEach((p) => resultsGrid.appendChild(renderProfileCard(p)));
+    const count = document.getElementById('resultsCount');
+    if (count) count.textContent = `${filtered.length} result${filtered.length!==1?'s':''}`;
     emptyState.classList.toggle("hidden", filtered.length !== 0);
   } else {
+    const title = document.getElementById('resultsTitle');
+    if (title) title.textContent = 'Matching Teams';
     const filtered = sampleTeams.filter((t) =>
       (!state.locationFilter || t.location.toLowerCase().includes(state.locationFilter)) &&
       (skills.length === 0 || hasSkills(t.lookingFor))
     );
     filtered.forEach((t) => resultsGrid.appendChild(renderTeamCard(t)));
+    const count = document.getElementById('resultsCount');
+    if (count) count.textContent = `${filtered.length} result${filtered.length!==1?'s':''}`;
     emptyState.classList.toggle("hidden", filtered.length !== 0);
   }
 }
