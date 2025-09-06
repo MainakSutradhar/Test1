@@ -405,12 +405,14 @@ function openChat(ctx) {
   addSystemMessage("Conversation started. Attachments and links are supported.");
   $("#chatModal").classList.remove("hidden");
   $("#chatModal").classList.add("flex");
+  document.body.classList.add('modal-open');
   $("#messageInput").focus();
 }
 
 function closeChat() {
   $("#chatModal").classList.add("hidden");
   $("#chatModal").classList.remove("flex");
+  document.body.classList.remove('modal-open');
 }
 
 function sendMessage() {
