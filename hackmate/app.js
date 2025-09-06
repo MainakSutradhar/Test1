@@ -135,6 +135,8 @@ function init() {
   renderSuggestions();
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+  revealOnScroll();
+  window.addEventListener('scroll', revealOnScroll, { passive: true });
 }
 
 function bindTabs() {
@@ -211,6 +213,18 @@ function hideSearchPanel() {
   const section = document.getElementById('search');
   if (!section) return;
   section.classList.add('hidden');
+}
+
+function revealOnScroll() {
+  const cards = document.querySelectorAll('.feature-card');
+  const viewportBottom = window.scrollY + window.innerHeight;
+  cards.forEach((el, idx) => {
+    const rect = el.getBoundingClientRect();
+    const top = rect.top + window.scrollY;
+    if (viewportBottom > top + 60) {
+      setTimeout(() => el.classList.add('revealed'), idx * 80);
+    }
+  });
 }
 
 function renderSkills() {
