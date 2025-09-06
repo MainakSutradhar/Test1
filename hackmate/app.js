@@ -197,7 +197,7 @@ function bindNavLinks() {
 // search panel is visible by default now
 
 function revealOnScroll() {
-  const cards = document.querySelectorAll('.feature-card');
+  const cards = document.querySelectorAll('.feature-card, .fade-up');
   const viewportBottom = window.scrollY + window.innerHeight;
   cards.forEach((el, idx) => {
     const rect = el.getBoundingClientRect();
