@@ -65,7 +65,9 @@ const sampleProfiles = [
     organization: "IIT Delhi",
     location: "Delhi, IN",
     skills: ["React", "Node.js", "Tailwind CSS", "PostgreSQL"],
-    readme: "Front-end focused full-stack dev. Loves building polished UX."
+    readme: "Front-end focused full-stack dev. Loves building polished UX.",
+    github: "https://github.com/aisha",
+    linkedin: "https://linkedin.com/in/aisha"
   },
   {
     id: "p2",
@@ -74,7 +76,9 @@ const sampleProfiles = [
     organization: "BITS Pilani",
     location: "Hyderabad, IN",
     skills: ["Python", "FastAPI", "MongoDB", "Docker"],
-    readme: "Backend engineer with API and data modeling expertise."
+    readme: "Backend engineer with API and data modeling expertise.",
+    github: "https://github.com/rahul",
+    linkedin: "https://linkedin.com/in/rahul"
   },
   {
     id: "p3",
@@ -83,7 +87,9 @@ const sampleProfiles = [
     organization: "NUS",
     location: "Singapore",
     skills: ["Machine Learning", "NLP", "Python", "AWS"],
-    readme: "ML practitioner focusing on NLP and model serving."
+    readme: "ML practitioner focusing on NLP and model serving.",
+    github: "https://github.com/sara",
+    linkedin: "https://linkedin.com/in/sara"
   }
 ];
 
@@ -137,6 +143,8 @@ function init() {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   revealOnScroll();
   window.addEventListener('scroll', revealOnScroll, { passive: true });
+  headerOnScroll();
+  window.addEventListener('scroll', headerOnScroll, { passive: true });
 }
 
 function bindTabs() {
@@ -225,6 +233,22 @@ function revealOnScroll() {
       setTimeout(() => el.classList.add('revealed'), idx * 80);
     }
   });
+  const popCards = document.querySelectorAll('#suggestionsGrid .card, #resultsGrid .card');
+  popCards.forEach((el, idx) => {
+    el.classList.add('card-pop');
+    const rect2 = el.getBoundingClientRect();
+    const top2 = rect2.top + window.scrollY;
+    if (viewportBottom > top2 + 60) {
+      setTimeout(() => el.classList.add('revealed'), idx * 60);
+    }
+  });
+}
+
+function headerOnScroll() {
+  const header = document.querySelector('.app-header');
+  if (!header) return;
+  if (window.scrollY > 4) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
 }
 
 function renderSkills() {
@@ -338,7 +362,11 @@ function renderProfileCard(p) {
         ${p.skills.map((s) => `<span class="badge">${s}</span>`).join("")}
       </div>
       <div class="mt-4 flex items-center justify-between">
-        <a href="mailto:${p.email}" class="text-xs text-cyan-300 hover:underline">${p.email}</a>
+        <div class="flex items-center gap-2 text-xs">
+          <a href="mailto:${p.email}" class="text-cyan-300 hover:underline">${p.email}</a>
+          ${p.github ? `<a href="${p.github}" target="_blank" class="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 hover:bg-white/10">GitHub</a>` : ''}
+          ${p.linkedin ? `<a href="${p.linkedin}" target="_blank" class="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 hover:bg-white/10">LinkedIn</a>` : ''}
+        </div>
         <button class="rounded-md bg-white/10 px-3 py-1.5 text-sm hover:bg-white/15" data-action="chat" data-type="profile" data-id="${p.id}" data-name="${p.name}">Chat</button>
       </div>
     </div>
@@ -426,9 +454,9 @@ function addChatMessage({ text = "", attachment = null, fromSelf = false, system
   const row = document.createElement("div");
   row.className = `flex ${fromSelf ? "justify-end" : "justify-start"}`;
   const bubble = document.createElement("div");
-  bubble.className = `max-w-[75%] rounded-xl px-3 py-2 text-sm ${
-    system ? "bg-white/5 text-slate-300" : fromSelf ? "bg-cyan-500/20 text-cyan-100" : "bg-fuchsia-500/20 text-fuchsia-100"
-  } border border-white/10`;
+  bubble.className = `bubble max-w-[75%] rounded-xl px-3 py-2 text-sm ${
+    system ? "bubble-system" : fromSelf ? "bubble-self" : "bubble-other"
+  }`;
   if (text) {
     const maybeLink = linkify(text);
     bubble.innerHTML = maybeLink;

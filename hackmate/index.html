@@ -16,7 +16,7 @@
     <div class="absolute -bottom-48 -right-40 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl"></div>
   </div>
 
-  <header class="relative z-10 border-b border-white/10 backdrop-blur supports-[backdrop-filter]:bg-slate-900/40">
+  <header class="app-header relative z-10 supports-[backdrop-filter]:bg-slate-900/40">
     <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
       <a href="#home" class="flex items-center gap-3">
         <svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="rounded-xl shadow-[0_0_40px_-10px_rgba(168,85,247,.7)]">
@@ -84,37 +84,7 @@
       </div>
     </section>
 
-    <section class="mt-16">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="feature-card p-5">
-          <div class="flex items-start gap-3">
-            <div class="feature-icon">⚡</div>
-            <div>
-              <h4 class="font-semibold">Instant Matching</h4>
-              <p class="mt-1 text-sm text-slate-400">Filter by skills and location to find ideal teammates and teams.</p>
-            </div>
-          </div>
-        </div>
-        <div class="feature-card p-5">
-          <div class="flex items-start gap-3">
-            <div class="feature-icon">💬</div>
-            <div>
-              <h4 class="font-semibold">Built-in Chat</h4>
-              <p class="mt-1 text-sm text-slate-400">Share links, files, and discuss right away without context switching.</p>
-            </div>
-          </div>
-        </div>
-        <div class="feature-card p-5">
-          <div class="flex items-start gap-3">
-            <div class="feature-icon">🎯</div>
-            <div>
-              <h4 class="font-semibold">Skill-first Profiles</h4>
-              <p class="mt-1 text-sm text-slate-400">Showcase what you’re great at and get discovered faster.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     <section id="search" class="hidden mt-2">
       <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
@@ -206,7 +176,7 @@
     </div>
   </div>
 
-  <footer class="relative z-10 mt-16 border-t border-white/10">
+  <footer class="footer-wrap relative z-10 mt-16 border-t border-white/10">
     <div class="mx-auto max-w-7xl px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-300">
       <div>
         <div class="flex items-center gap-2">
@@ -218,11 +188,11 @@
       <div>
         <h4 class="font-semibold text-slate-200">Links</h4>
         <ul class="mt-2 space-y-1">
-          <li><a href="#home" class="hover:text-white">Home</a></li>
-          <li><a href="#search" class="hover:text-white">Profiles</a></li>
-          <li><a href="#about" class="hover:text-white">About</a></li>
-          <li><a href="login.html" class="hover:text-white">Login</a></li>
-          <li><a href="signup.html" class="hover:text-white">Sign Up</a></li>
+          <li><a href="#home" class="footer-link hover:text-white">Home</a></li>
+          <li><a href="#search" class="footer-link hover:text-white">Profiles</a></li>
+          <li><a href="#about" class="footer-link hover:text-white">About</a></li>
+          <li><a href="login.html" class="footer-link hover:text-white">Login</a></li>
+          <li><a href="signup.html" class="footer-link hover:text-white">Sign Up</a></li>
         </ul>
       </div>
       <div>

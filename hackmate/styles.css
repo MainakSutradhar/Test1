@@ -2,6 +2,10 @@
 html, body { margin: 0; }
 body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
 
+/* Header effects */
+.app-header { position: sticky; top: 0; z-index: 30; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(2,6,23,0.35); transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease; }
+.app-header.scrolled { background: rgba(2,6,23,0.6); box-shadow: 0 6px 24px -12px rgba(34,211,238,0.2); border-color: rgba(255,255,255,0.12); }
+
 /* Segmented tabs */
 .tab-btn { 
   border-radius: 0.5rem; 
@@ -51,6 +55,11 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Ro
 .card-body { padding: 1.25rem; }
 .badge { display:inline-flex; align-items:center; border-radius:0.375rem; background: rgba(255,255,255,0.08); padding: 0.125rem 0.5rem; font-size: 11px; color: rgb(203,213,225); }
 
+/* Card hover pop and reveal */
+.card-pop { transform: translateY(10px) scale(0.985); transition: transform 300ms ease, box-shadow 300ms ease, background 200ms ease; opacity: 0; }
+.card-pop.revealed { transform: translateY(0) scale(1); opacity: 1; }
+.card-pop:hover { box-shadow: 0 16px 40px -14px rgba(168,85,247,0.45); background: rgba(2,6,23,0.8); }
+
 /* Glow title */
 .glow-text { background: linear-gradient(135deg, #fff, #a855f7, #22d3ee); -webkit-background-clip:text; background-clip:text; color: transparent; text-shadow: 0 0 12px rgba(168,85,247,0.35), 0 0 24px rgba(34,211,238,0.25); }
 .glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
@@ -62,4 +71,18 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Ro
 .feature-card:hover { box-shadow: 0 12px 40px -12px rgba(168,85,247,0.45); background: rgba(2,6,23,0.8); }
 .feature-card::before { content:""; position:absolute; inset:-1px; background: radial-gradient(500px 120px at 90% -10%, rgba(168,85,247,0.18), transparent), radial-gradient(500px 120px at -10% 110%, rgba(34,211,238,0.18), transparent); pointer-events:none; }
 .feature-icon { width: 2rem; height: 2rem; display:grid; place-items:center; border-radius:0.5rem; border:1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.06); }
+
+/* Chat modal theme */
+.chat-shell { border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(2,6,23,0.8); backdrop-filter: blur(10px); box-shadow: 0 24px 80px -24px rgba(34,211,238,0.25); }
+.chat-header { background: linear-gradient(135deg, rgba(168,85,247,0.18), rgba(34,211,238,0.12)); border-bottom: 1px solid rgba(255,255,255,0.12); }
+.chat-stream { background: radial-gradient(1000px 200px at 70% -30%, rgba(34,211,238,0.08), transparent), radial-gradient(800px 180px at -10% 130%, rgba(168,85,247,0.08), transparent); }
+.bubble { border: 1px solid rgba(255,255,255,0.08); }
+.bubble-self { background: rgba(34,211,238,0.18); color: rgb(207,250,254); box-shadow: 0 10px 30px -16px rgba(34,211,238,0.5); }
+.bubble-other { background: rgba(168,85,247,0.18); color: rgb(243,232,255); box-shadow: 0 10px 30px -16px rgba(168,85,247,0.5); }
+.bubble-system { background: rgba(255,255,255,0.06); color: rgb(203,213,225); }
+
+/* Footer enhancements */
+.footer-wrap { position: relative; }
+.footer-wrap::before { content:""; position:absolute; inset: -40px -10%; background: radial-gradient(600px 160px at 10% 120%, rgba(168,85,247,0.12), transparent), radial-gradient(600px 160px at 90% -20%, rgba(34,211,238,0.12), transparent); pointer-events:none; }
+.footer-link:hover { text-shadow: 0 0 12px rgba(168,85,247,0.5); }
 

@@ -16,7 +16,21 @@
     <div class="absolute -bottom-48 -right-40 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl"></div>
   </div>
 
-  <main class="relative z-10 min-h-screen grid place-items-center px-6 py-10">
+  <header class="app-header relative z-10 supports-[backdrop-filter]:bg-slate-900/40">
+    <div class="mx-auto max-w-4xl px-6 py-4 flex items-center justify-between">
+      <a href="index.html#home" class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-fuchsia-500 via-violet-500 to-cyan-500"></div>
+        <span class="text-sm font-semibold">HackMate</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-5 text-xs text-slate-300">
+        <a href="index.html#home" class="hover:text-white">Home</a>
+        <a href="index.html#search" class="hover:text-white">Search</a>
+        <a href="login.html" class="hover:text-white">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="relative z-10 min-h-[calc(100vh-64px)] grid place-items-center px-6 py-10">
     <div class="w-full max-w-lg overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-slate-900/40 to-slate-950/60 p-6">
       <div class="flex items-center gap-3 mb-4">
         <div class="h-9 w-9 rounded-lg bg-gradient-to-br from-fuchsia-500 via-violet-500 to-cyan-500"></div>
@@ -31,6 +45,8 @@
         <input type="password" placeholder="Confirm password" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm" />
         <input type="text" placeholder="College / Organization" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm md:col-span-2" />
         <input type="text" placeholder="Location" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm md:col-span-2" />
+        <input type="url" placeholder="GitHub URL (optional)" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm md:col-span-2" />
+        <input type="url" placeholder="LinkedIn URL (optional)" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm md:col-span-2" />
         <textarea placeholder="Short bio / README" rows="4" class="rounded-lg border border-white/10 bg-slate-900/60 px-3 py-2 text-sm md:col-span-2"></textarea>
         <div class="md:col-span-2 flex items-center justify-end gap-3">
           <button type="button" onclick="location.href='index.html#home'" class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm text-white hover:bg-white/10">Cancel</button>
@@ -41,5 +57,9 @@
     </div>
   </main>
 </body>
+<script>
+  function headerOnScroll(){const h=document.querySelector('.app-header');if(!h)return;window.scrollY>4?h.classList.add('scrolled'):h.classList.remove('scrolled');}
+  document.addEventListener('scroll', headerOnScroll, {passive:true});
+</script>
 </html>
 
