@@ -44,21 +44,40 @@
 
   <main class="relative z-10 mx-auto max-w-7xl px-6 py-10">
     <section id="home" class="mb-12">
-      <div class="text-center">
-        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight glow-text glow-pulse">Find your perfect hackathon match</h2>
-        <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Search teammates or teams based on skills, connect instantly, and collaborate.</p>
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/40 to-slate-950/60 p-10 text-center">
+        <div class="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl"></div>
+        <h2 class="text-5xl md:text-6xl font-extrabold tracking-tight glow-text glow-pulse">Find your perfect hackathon match</h2>
+        <p class="mt-3 text-slate-400 max-w-2xl mx-auto">Match with teammates or teams based on skills. Chat instantly. Build fast.</p>
         <div class="mt-6 flex items-center justify-center gap-3">
-          <a href="#search" class="rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_0_40px_-12px_rgba(34,211,238,0.6)] hover:opacity-95">Explore Profiles</a>
-          <a href="#create-profile" class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white hover:bg-white/10">Create Profile</a>
+          <a href="#search" class="rounded-lg bg-gradient-to-br from-fuchsia-500 to-cyan-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_40px_-12px_rgba(34,211,238,0.6)] hover:opacity-95">Start searching</a>
+          <a href="#create-profile" class="rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10">Create Profile</a>
         </div>
-      </div>
-
-      <div class="mt-10">
-        <div class="mb-3 flex items-center justify-between">
-          <h3 class="text-lg font-semibold">Suggested for you</h3>
-          <a href="#search" class="text-sm text-cyan-300 hover:underline">See all</a>
+        <div class="mt-8 flex items-center justify-center gap-6 text-xs text-slate-400">
+          <span class="opacity-70">Trusted by</span>
+          <div class="flex items-center gap-4 opacity-70">
+            <span class="uppercase tracking-wider">MLH</span>
+            <span class="uppercase tracking-wider">Devpost</span>
+            <span class="uppercase tracking-wider">GitHub</span>
+            <span class="uppercase tracking-wider">Vercel</span>
+            <span class="uppercase tracking-wider">Figma</span>
+          </div>
         </div>
-        <div id="suggestionsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+        <div class="mt-10 rounded-2xl border border-white/10 bg-slate-900/40 p-0 overflow-hidden">
+          <div class="flex items-center gap-1 border-b border-white/10 bg-slate-900/60 px-4 py-2 text-left text-xs text-slate-400">
+            <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-amber-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
+            <span class="ml-3">Popular profiles</span>
+          </div>
+          <div class="p-4">
+            <div class="mb-3 flex items-center justify-between">
+              <h3 class="text-lg font-semibold">Suggested for you</h3>
+              <a href="#search" class="text-sm text-cyan-300 hover:underline">See all</a>
+            </div>
+            <div id="suggestionsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+          </div>
+        </div>
       </div>
     </section>
 
