@@ -134,7 +134,6 @@ function init() {
   bindTabs();
   bindFilters();
   bindNavLinks();
-  bindSearchPanel();
   renderSkills();
   applyFilters();
   setupChat();
@@ -195,33 +194,7 @@ function bindNavLinks() {
   });
 }
 
-function bindSearchPanel() {
-  const closeBtn = document.getElementById('closeSearchPanel');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      hideSearchPanel();
-      const home = document.getElementById('home');
-      if (home) home.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      history.pushState(null, '', '#home');
-    });
-  }
-}
-
-function showSearchPanel() {
-  const section = document.getElementById('search');
-  if (!section) return;
-  section.classList.remove('hidden');
-  // Ensure tabs are bound/active and results render
-  applyFilters();
-  const input = document.getElementById('skillSearch');
-  if (input) input.focus();
-}
-
-function hideSearchPanel() {
-  const section = document.getElementById('search');
-  if (!section) return;
-  section.classList.add('hidden');
-}
+// search panel is visible by default now
 
 function revealOnScroll() {
   const cards = document.querySelectorAll('.feature-card');

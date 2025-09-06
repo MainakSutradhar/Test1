@@ -17,7 +17,7 @@
   </div>
 
   <header class="app-header relative z-10 supports-[backdrop-filter]:bg-slate-900/40">
-    <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-5 flex items-center justify-between">
       <a href="#home" class="flex items-center gap-3">
         <svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="rounded-xl shadow-[0_0_40px_-10px_rgba(168,85,247,.7)]">
           <defs>
@@ -45,7 +45,7 @@
     </div>
   </header>
 
-  <main class="relative z-10 mx-auto max-w-7xl px-6 py-10">
+  <main class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-10">
     <section id="home" class="mb-12">
       <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900/40 to-slate-950/60 p-10 text-center">
         <div class="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
@@ -86,7 +86,7 @@
 
     
 
-    <section id="search" class="hidden mt-2">
+    <section id="search" class="mt-8">
       <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
         <div class="mb-4 flex items-center gap-3">
           <h3 class="text-xl font-bold">Search</h3>
@@ -102,7 +102,7 @@
             <div class="hidden sm:block">
               <input id="locationFilter" type="text" placeholder="Filter by location" class="w-56 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/60" />
             </div>
-            <button id="closeSearchPanel" class="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-300 hover:bg-white/10">Close</button>
+            
           </div>
         </div>
 
@@ -136,6 +136,37 @@
       </div>
     </section>
 
+    <section id="features" class="mt-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="feature-icon">⚡</div>
+            <div>
+              <h4 class="font-semibold">Instant Matching</h4>
+              <p class="mt-1 text-sm text-slate-400">Filter by skills and location to find ideal teammates and teams.</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="feature-icon">💬</div>
+            <div>
+              <h4 class="font-semibold">Built-in Chat</h4>
+              <p class="mt-1 text-sm text-slate-400">Share links, files, and discuss right away without context switching.</p>
+            </div>
+          </div>
+        </div>
+        <div class="feature-card p-5">
+          <div class="flex items-start gap-3">
+            <div class="feature-icon">🎯</div>
+            <div>
+              <h4 class="font-semibold">Skill-first Profiles</h4>
+              <p class="mt-1 text-sm text-slate-400">Showcase what you’re great at and get discovered faster.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
   </main>
 
