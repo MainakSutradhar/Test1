@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Happy Birthday — Neon Memories</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!-- GSAP -->
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <!-- Confetti -->
+    <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js"></script>
+    <!-- App -->
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <div id="bg-gradient"></div>
+    <main>
+      <!-- Intro / Hero -->
+      <section id="intro" class="section section--full">
+        <div class="container container--center">
+          <h1 class="title neon-mix" aria-label="Happy Birthday!">
+            Happy Birthday!
+          </h1>
+          <p class="typed" id="typed-intro" aria-live="polite"></p>
+          <a href="#gallery" class="cta glow-outline" aria-label="Scroll to the memories">
+            ▼ Explore Memories
+          </a>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="section">
+        <div class="container">
+          <h2 class="section-heading neon-cyan">Our Memories</h2>
+          <p class="section-subtitle">
+            Little snapshots that make our story glow.
+          </p>
+
+          <div class="gallery-grid">
+            <!-- You can replace these image URLs with your own -->
+            <figure class="gallery-item glow-frame">
+              <img src="https://images.unsplash.com/photo-1520975922284-9c0bff3e5337?q=80&w=1200&auto=format&fit=crop" alt="Laughing together at sunset" loading="lazy" />
+              <figcaption>Golden hour laughs</figcaption>
+            </figure>
+
+            <figure class="gallery-item glow-frame">
+              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200&auto=format&fit=crop" alt="Birthday candles being blown" loading="lazy" />
+              <figcaption>Blowing out wishes</figcaption>
+            </figure>
+
+            <figure class="gallery-item glow-frame">
+              <img src="https://images.unsplash.com/photo-1521334726092-b509a19597f3?q=80&w=1200&auto=format&fit=crop" alt="Neon city night walk" loading="lazy" />
+              <figcaption>Neon night walks</figcaption>
+            </figure>
+
+            <figure class="gallery-item glow-frame">
+              <img src="https://images.unsplash.com/photo-1522008660072-2c0fa501f8d5?q=80&w=1200&auto=format&fit=crop" alt="Coffee date with latte art" loading="lazy" />
+              <figcaption>Warm coffee dates</figcaption>
+            </figure>
+
+            <figure class="gallery-item glow-frame">
+              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="Road trip in the mountains" loading="lazy" />
+              <figcaption>Road trip vibes</figcaption>
+            </figure>
+
+            <figure class="gallery-item glow-frame">
+              <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1200&auto=format&fit=crop" alt="Friends cheering with sparklers" loading="lazy" />
+              <figcaption>Midnight sparklers</figcaption>
+            </figure>
+
+            <figure class="gallery-item glow-frame">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Picnic under string lights" loading="lazy" />
+              <figcaption>Cozy picnic lights</figcaption>
+            </figure>
+
+            <figure class="gallery-item glow-frame">
+              <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1200&auto=format&fit=crop" alt="Laughing with cupcakes" loading="lazy" />
+              <figcaption>Sweet cupcake giggles</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final Reveal -->
+      <section id="reveal" class="section section--full">
+        <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+        <div class="container container--center">
+          <h2 class="reveal-title neon-purple">Happy Birthday 🎉</h2>
+          <p class="reveal-subtitle">Wishing you joy, love, and neon-bright adventures ahead!</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Made with ❤️ by [Your Name]</p>
+      </div>
+    </footer>
+  </body>
+</html>
